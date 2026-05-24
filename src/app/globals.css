@@ -1,11 +1,16 @@
 @import "tailwindcss";
+/* @plugin "tailwindcss/typography";
+@tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
-*, html {
+*{
+  box-sizing: border-box;
+}
+
+html {
   margin: 0;
   padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -15,7 +20,7 @@
 }
 
 body {
-  background: white;
+  background: rgb(233, 233, 233);
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
