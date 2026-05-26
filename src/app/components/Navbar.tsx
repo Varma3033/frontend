@@ -38,10 +38,11 @@ export default function Navbar() {
 
         return (
         //navbar/header component with styling and navigation links
-        <header className="mt-10 fixed z-50 left-1/2 transform -translate-x-1/2 right-1/2 w-[650px] h-[50px] rounded-full bg-white/50 backdrop-blur-xl">
+        <header className="mt-10 fixed z-50 left-1/2 transform -translate-x-1/2 right-1/2 w-[475px] h-[50px] rounded-full bg-white/80 backdrop-blur-xl">
         <div>
-          <nav className="flex items-center justify-center w-[650px] h-[50px] border border-black rounded-full">
-            <ul className="flex items-center justify-center gap-15 text-lg font-bold text-black">
+          <nav className="flex items-center justify-center w-[475px] h-[50px] border border-black rounded-full backdrop-blur-xl">
+            <ul className="flex items-center justify-center gap-10 text-lg font-light backdrop-blur-xl">
+              
               <li>
                 <NavLink 
                 text="Home" 
@@ -49,36 +50,41 @@ export default function Navbar() {
                 //ternary operator: highlight navbar link when on corresponding section
                 className={
                     activeSection === "home" 
-                    ? "opacity-100 text-red-400 bg-red-300/20 py-2 px-4 rounded-3xl" 
-                    : "opacity-50 hover:opacity-75"} />
+                    ? "opacity-100 text-red-500 bg-red-300/20 py-2 px-4 rounded-3xl" 
+                    : "y-2 px-4 rounded-3xl text-zinc-500 bg-white/80 hover:text-black hover:bg-zinc-100 hover:py-2 hover:px-4 hover:rounded-3xl"} />
               </li>
+              
               <li>
                 <NavLink 
-                text="My Projects" 
-                path="#my-projects" 
+                text="Work" 
+                path="#projects" 
                 className={
-                    activeSection === "my-projects" 
-                    ? "opacity-100 text-red-400 bg-red-300/20 py-2 px-4 rounded-3xl" 
-                    : "opacity-50 hover:opacity-75"} />
+                    activeSection === "projects" 
+                    ? "opacity-100 text-red-500 bg-red-300/20 py-2 px-4 rounded-3xl" 
+                    : "y-2 px-4 rounded-3xl text-zinc-500 bg-white/80 hover:text-black hover:bg-zinc-100 hover:py-2 hover:px-4 hover:rounded-3xl"} />
               </li>
-              <li>
-               <NavLink 
-               text="About Me" 
-               path="#about-me" 
-               className={
-                   activeSection === "about-me" 
-                   ? "opacity-100 text-red-400 bg-red-300/20 py-2 px-4 rounded-3xl" 
-                   : "opacity-50 hover:opacity-75"} />
-              </li>
+              
               <li>
                 <NavLink 
-                text="Contact Me" 
-                path="#contact-me" 
+                text="About" 
+                path="#about" 
                 className={
-                    activeSection === "contact-me" 
-                    ? "opacity-100 text-red-400 bg-red-300/20 py-2 px-4 rounded-3xl" 
-                    : "opacity-50 hover:opacity-75"} />
+                    activeSection === "about" 
+                    ? "opacity-100 text-red-500 bg-red-300/20 py-2 px-4 rounded-3xl" 
+                    : "y-2 px-4 rounded-3xl text-zinc-500 bg-white/80 hover:text-black hover:bg-zinc-100 hover:py-2 hover:px-4 hover:rounded-3xl"} />
               </li>
+              
+
+              <li>
+                <NavLink 
+                text="Contact" 
+                path="#contact" 
+                className={
+                    activeSection === "contact" 
+                    ? "opacity-100 text-red-500 bg-red-300/20 py-2 px-4 rounded-3xl" 
+                    : "y-2 px-4 rounded-3xl text-zinc-500 bg-white/80 hover:text-black hover:bg-zinc-100 hover:py-2 hover:px-4 hover:rounded-3xl"} />
+              </li>
+
             </ul>
           </nav>
         </div> 
