@@ -3,18 +3,38 @@ import {
     ArrowDownCircle
 } from "lucide-react"
 
-async function getHomePage() {
-    const homepageRes = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/homepage?populate=*`,
-       { cache: "no-store" });
-    
-    if (!homepageRes.ok) return null;
-    const data = await homepageRes.json();
-    
-    console.log(data);
+async function getData(url: string): Promise<any | null> {
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
 
-    return data.data;
+  if (!res.ok) {
+    console.error("Fetch failed:", res.status, url);
+    return null;
+  }
+
+  const text = await res.text();
+
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    console.error("Invalid JSON:", error);
+    return null;
+  }
 }
+
+async function getHomePage(): Promise<any | null> {
+  const data = await getData(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/homepage?populate=*`
+  );
+
+  console.log("Homepage Data:", data);
+
+  return data?.data ?? null;
+}
+
 
 export default async function Homepage() {
     const homepage = await getHomePage();

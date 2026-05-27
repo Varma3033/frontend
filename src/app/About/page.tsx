@@ -1,16 +1,35 @@
 import Image from "next/image";
 
-async function getAboutPage() {
-    const aboutRes = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?populate=*`, 
-        { cache: "no-store"});
+async function getData(url: string): Promise<any | null> {
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
 
-    if (!aboutRes.ok) return null;
-    const data = await aboutRes.json();
-    
-    console.log(data);
+  if (!res.ok) {
+    console.error("Fetch failed:", res.status, url);
+    return null;
+  }
 
-    return data.data;
+  const text = await res.text();
+
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    console.error("Invalid JSON:", error);
+    return null;
+  }
+}
+
+async function getAboutPage(): Promise<any | null> {
+  const data = await getData(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?populate=*`
+  );
+
+  console.log("About Data:", data);
+
+  return data?.data ?? null;
 }
 
 export default async function About() {

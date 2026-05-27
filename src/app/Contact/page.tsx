@@ -10,18 +10,38 @@ import {
 } from "react-icons/fa"
 
 
-async function getContactPage() {
-    const contactRes = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?populate=*`, 
-        { cache: "no-store" });
-    
-    if (!contactRes.ok) return null;
-    const data = await contactRes.json();
-    
-    console.log(data);
+async function getData(url: string): Promise<any | null> {
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
 
-    return data.data;
+  if (!res.ok) {
+    console.error("Fetch failed:", res.status, url);
+    return null;
+  }
+
+  const text = await res.text();
+
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    console.error("Invalid JSON:", error);
+    return null;
+  }
 }
+
+async function getContactPage(): Promise<any | null> {
+  const data = await getData(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?populate=*`
+  );
+
+  console.log("Contact Data:", data);
+
+  return data?.data ?? null;
+}
+
 
 export default async function Contact() {
     const contact = await getContactPage();

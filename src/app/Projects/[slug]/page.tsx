@@ -5,21 +5,39 @@ import {
     ArrowLeftCircle
 } from "lucide-react"
 
-async function getProjects(slug: string) {
-  const projectRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`,
-  {cache: "no-store"}
-  );
-  
-  if (!projectRes.ok) return null;
-const data = await projectRes.json();
-console.log("Slug from URL", slug)
-console.log("Strapi Result", data)
 
-return data.data?.[0] ?? null;
+async function getData(url: string): Promise<any | null> {
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
 
+  if (!res.ok) {
+    console.error("Fetch failed:", res.status, url);
+    return null;
+  }
+
+  const text = await res.text();
+
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    console.error("Invalid JSON:", error);
+    return null;
+  }
 }
 
+async function getProjects(slug: string): Promise<any | null> {
+  const data = await getData(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`
+  );
+
+  console.log("Slug from URL:", slug);
+  console.log("Strapi Result:", data);
+
+  return data?.data?.[0] ?? null;
+}
 
 export default async function ProjectDetailPage({params,}: 
   {
