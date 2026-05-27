@@ -11,7 +11,7 @@ import {
 
 
 async function getContactPage() {
-    const contactRes = await fetch("http://localhost:1337/api/contact?populate=*", {
+    const contactRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?populate=*`, {
         cache: "no-store",
     });
 

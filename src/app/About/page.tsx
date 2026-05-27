@@ -29,7 +29,7 @@ export default async function About() {
                 sizes="(max-width: 768px) 180px, 300px"
                 fill
                 key={about.id}
-                src={`http://localhost:1337${about.profilepic.url}`}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${about.profilepic.url}`}
                 alt={about.name}
                 className="object-cover rounded-full transition duration-300 hover:scale-105" 
                 />   

@@ -8,7 +8,7 @@ import {
 
 async function getProjects(slug: string) {
   const projectRes = await fetch(
-    `http://localhost:1337/api/projects?filters[slug][$eq]=${slug}&populate=*`,
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`,
   {
     cache: "no-store",
   }

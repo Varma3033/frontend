@@ -4,7 +4,7 @@ import {
 } from "lucide-react"
 
 async function getHomePage() {
-    const homepageRes = await fetch("http://localhost:1337/api/homepage?populate=*", {
+    const homepageRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/homepage?populate=*`, {
         cache: "no-store",
     });
 

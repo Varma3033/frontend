@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image"
 
 async function getAllProjects() {
-    const projectsRes = await fetch("http://localhost:1337/api/projects?populate=*", {
+    const projectsRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?populate=*`, {
         cache: "no-store",
     });
 
@@ -14,7 +14,7 @@ async function getAllProjects() {
 }
 
 async function projectPageTitle() {
-    const projectpageRes = await fetch("http://localhost:1337/api/project-page-info?populate=*", {
+    const projectpageRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/project-page-info?populate=*`, {
         cache: "no-store",
     });
 
@@ -68,7 +68,7 @@ export default async function Projects() {
                 unoptimized
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                src={`http://localhost:1337${project.image.url}`}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.image.url}`}
                 alt={project.title}
                 className="object-cover transition duration-500 group-hover:scale-105"
                 />
