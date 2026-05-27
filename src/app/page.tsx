@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import Homepage from "./Homepage/page";
-import Projects from "C:\Users\User\OneDrive\Desktop\portfolio-site\frontend\src\app\projects\page.tsx";
+import Projects from "\frontend\src\app\projects\page.tsx";
 import About from "./About/page";
 import Contact from "./Contact/page";
 import Footer from "./components/Footer";
