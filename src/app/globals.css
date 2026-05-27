@@ -28,6 +28,21 @@ body {
   max-width: 100%;
 }
 
+@keyframes bounceMd {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.75;
+  }
+  25%, 50%, 75% {
+    transform: translateY(-2vh);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-md {
+  animation: bounceMd 4s ease-in infinite;
+}
+
 @keyframes bounceSlow {
   0%, 100% {
     transform: translateY(0);
@@ -40,8 +55,9 @@ body {
 }
 
 .animate-bounce-slow {
-  animation: bounceSlow 8s ease-out infinite;
+  animation: bounceSlow 5s ease-out infinite;
 }
+
 
 @keyframes bounceSlower {
   0%, 100% {
@@ -55,6 +71,6 @@ body {
 }
 
 .animate-bounce-slower {
-  animation: bounceSlower 5s ease-out infinite;
+  animation: bounceSlower 8s ease-out infinite;
 }
 

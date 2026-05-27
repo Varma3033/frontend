@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import Homepage from "./Homepage/page";
-import Projects from "./Projects/page";
+import Projects from "./projects/page";
 import About from "./About/page";
 import Contact from "./Contact/page";
 import Footer from "./components/Footer";

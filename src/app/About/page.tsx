@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 async function getAboutPage() {
     const aboutRes = await fetch("http://localhost:1337/api/about?populate=*", {
@@ -13,48 +12,62 @@ async function getAboutPage() {
     return data.data;
 }
 
-export default async function About(props: any) {
+export default async function About() {
     const about = await getAboutPage();
     
     return (
         
         <section
       id="about" 
-      className="relative mt-0 min-h-screen flex pt-[15vh] justify-center">
-
-        <div className="absolute inset-0 flex items-center justify-center z-1">
-            <div 
-             className="absolute h-70 w-70 rounded-full bg-red-500/70 blur-[200px]">
-            </div>
-        </div>
-
-            <div className="w-full md:w-1/2">
-                <img
+      className="relative mt-0 min-h-screen flex pt-30 justify-center">
+       
+        <div className="z-30">
+            <div className="flex items-center justify-center w-full pb-5">
+            <div className="relative h-[30vw] w-[30vw] max-h-[300px] max-w-[300px] rounded-full bg-white">  
+                <Image
+                unoptimized
+                sizes="(max-width: 768px) 180px, 300px"
+                fill
                 key={about.id}
                 src={`http://localhost:1337${about.profilepic.url}`}
                 alt={about.name}
-                className="object-contain w-full h-[250px] rounded-lg mb-4 transition duration-300 hover:scale-105" />
+                className="object-cover rounded-full transition duration-300 hover:scale-105" 
+                />   
+            </div>
             </div>
             
-            <div className="w-full flex flex-col items-center md:w-1/2 md:pl-[2em] md:items-start">
+            <div className="w-full flex flex-col items-center justify-center">
             
-             <h2 className="text-2xl font-bold">
+            <div className="">
+             <h2 className="text-4xl font-black uppercase md:text-5xl">
                 {about.name}
              </h2>
+            </div>
             
-             <p className="mt-2 text-black">
-                {about.location}
-             </p>
-            
-             <p className="mt-4 text-black">
+            <div className="flex flex-row items-center justify-center gap-6 py-4">
+            <div className="py-3 px-4 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105">                  
+             <h3 className="text-lg text-white">
                 {about.role}
-             </p>
-        
-             <p className="mt-4 text-black">
+             </h3>
+            </div>
+
+            <div className="p-3 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105">                  
+             <h3 className="text-lg text-white">
+                {about.location}
+             </h3>
+            </div>
+            </div>
+
+            <div className="w-[75vw] max-w-[800px] flex justify-center items-center">
+             <p className="mt-4 text-center text-md md:text-lg">
                 {about.bio}
              </p>
-
+            </div>
+            
+            </div>
+            
             </div>
 
             </section>
+            
         )}

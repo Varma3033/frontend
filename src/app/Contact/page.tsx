@@ -1,5 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
+import {
+    Mail,
+    ArrowRightCircle
+} from "lucide-react"
+
+import {
+    FaInstagram,
+    FaLinkedin,
+} from "react-icons/fa"
+
 
 async function getContactPage() {
     const contactRes = await fetch("http://localhost:1337/api/contact?populate=*", {
@@ -13,68 +22,93 @@ async function getContactPage() {
     return data.data;
 }
 
-export default async function Contact(props: any) {
+export default async function Contact() {
     const contact = await getContactPage();
     
     return (
         
         <section
-      id="contact" 
-      className="relative mt-0 min-h-screen flex pt-[15vh] justify-center">
+         id="contact" 
+         className="relative min-h-screen pt-[15vh] px-6 mt-0 ">
 
-        <div className="absolute inset-0 flex items-center justify-center z-1">
-            <div 
-             className="absolute h-70 w-70 rounded-full bg-red-500/70 blur-[200px]">
-            </div>
+        <div className="flex flex-col items-center text-center gap-10">
+
+{/* heading */}
+        <div>
+            <h1 className="text-4xl font-black uppercase md:text-5xl">{contact.contactTitle}</h1>
+            <h2 className="mt-4 text-xl text-black/60 md:text-2xl">{contact.contactDescription}</h2>
+                       
         </div>
 
-            <div className="w-full md:w-1/2">
-                <img
-                key={contact.id}
-                src={`http://localhost:1337${contact.icons1}`}
-                alt={contact.email}
-                className="object-contain w-full h-[250px] rounded-lg mb-4 transition duration-300 hover:scale-105" />
-            </div>
+{/* Contact Links */}
+        <div className="grid gap-6 w-full max-w-3xl">
+                        
+            <Link href={`mailto:${contact.email}`}
+            className="h-30 group flex items-center justify-between rounded-4xl border border-black/10 bg-white/80 shadow-sm backdrop-blur-xl p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                
+                <div className="flex items-center gap-5 flex-1">
+                
+                <div className="flex items-center justify-center rounded-full">       
+                   <Mail 
+                   size={36} /> 
+                </div>
+
+                <div className="min-w-0">
+                <h2 className="truncate">
+                    {contact.emailTitle} {contact.email}
+                </h2>
+                </div>
+
+                </div>
+                
+                <ArrowRightCircle 
+                size={40}
+                className="flex-shrink-0" 
+                />
+                
+            </Link>     
             
-            <div className="w-full flex flex-col items-center md:w-1/2 md:pl-[2em] md:items-start">
-                {contact.email}
+            <Link href={contact.social1URL}
+            className="h-30 group flex items-center justify-between rounded-4xl border border-black/10 bg-white/80 shadow-sm p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                
+                <div className="flex items-center gap-5">
+                
+                <div className="flex items-center justify-center rounded-full">
+                    <FaInstagram size={40} /> 
+                </div>
+                
+                <h2>       
+                    {contact.social1} {contact.social1username}
+                </h2>
+                
+                </div>
+                
+                
+                <ArrowRightCircle size={40} />
+                
+            </Link>
+
+            <Link href={contact.social2URL}
+            className="h-30 group flex items-center justify-between rounded-4xl border border-black/10 bg-white/80 shadow-sm p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                
+                <div className="flex items-center gap-5">
+                
+                <div className="flex items-center justify-center rounded-full">
+                    <FaLinkedin size={40} />
+                </div>
+                
+                <h2>       
+                    {contact.social2} {contact.social2username}
+                </h2>
+                
+                </div>
+                
+                <ArrowRightCircle size={40} />
+                
+            </Link>
+
             </div>
 
-            <div className="w-full md:w-1/2">
-                <img
-                key={contact.id}
-                src={`http://localhost:1337${contact.icons2}`}
-                alt={contact.phone}
-                className="object-contain w-full h-[250px] rounded-lg mb-4 transition duration-300 hover:scale-105" />
             </div>
-            
-            <div className="w-full flex flex-col items-center md:w-1/2 md:pl-[2em] md:items-start">
-                {contact.phone}
-            </div>
-
-            <div className="w-full md:w-1/2">
-                <img
-                key={contact.id}
-                src={`http://localhost:1337${contact.icons3}`}
-                alt={contact.social1URL}
-                className="object-contain w-full h-[250px] rounded-lg mb-4 transition duration-300 hover:scale-105" />
-            </div>
-            
-            <div className="w-full flex flex-col items-center md:w-1/2 md:pl-[2em] md:items-start">
-                {contact.social1URL}
-            </div>
-
-            <div className="w-full md:w-1/2">
-                <img
-                key={contact.id}
-                src={`http://localhost:1337${contact.icons4}`}
-                alt={contact.social2URL}
-                className="object-contain w-full h-[250px] rounded-lg mb-4 transition duration-300 hover:scale-105" />
-            </div>
-            
-            <div className="w-full flex flex-col items-center md:w-1/2 md:pl-[2em] md:items-start">
-                {contact.social2URL}
-            </div>
-
             </section>
         )}

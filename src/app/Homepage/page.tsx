@@ -1,5 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
+import {
+    ArrowDownCircle
+} from "lucide-react"
 
 async function getHomePage() {
     const homepageRes = await fetch("http://localhost:1337/api/homepage?populate=*", {
@@ -13,157 +15,132 @@ async function getHomePage() {
     return data.data;
 }
 
-export default async function Homepage(props: any) {
+export default async function Homepage() {
     const homepage = await getHomePage();
     
     return (
         
         <section 
-                    id="home" 
-                    className="relative mt-0 min-h-screen flex pt-[15vh] justify-center"
+        id="home" 
+        className="relative mt-0 min-h-screen flex items-center justify-center px-5 overflow-hidden"
                     >   
-              {/* circles */}        
-                       <div className="absolute inset-0 flex items-center justify-center z-1">
-                          <div 
-                           className="absolute h-40 w-40 rounded-full bg-red-500/90 animate-pulse blur-[100px]">
-                          </div>
-                        </div>
-                      
-                        <div className="
-                        absolute 
-                        z-30 
-                        bottom-[70%] left-[39%] 
-                        md:bottom-[50%] md:left-[65%] 
-                        lg:bottom-[49%] lg:left-[67%]
-                        ">  
-                          
-                          <a href="#contact" 
-                           className="
-                           group
-                           relative
-                           flex items-center justify-center 
-                           h-[20vw] w-[20vw]
-                           min-w-[125px] min-h-[125px]
-                           max-w-[300px] max-h-[300px]
-                           rounded-full
-                           overflow-hidden 
-                           bg-red-500/90
-                           animate-bounce-slow
-                           cursor-pointer">
-                        
-                        
-              
-                          <span
-                          className="
-                          pointer-events-none
-                          absolute 
-                          text-white 
-                          text-2xl 
-                          font-light 
-                          opacity-0
-                          z-20 
-                          group-hover:opacity-100 
-                          transition duration-300">
-                            Contact Me
-                          </span>
-                          </a>
-                          
-                        </div>
-                        
-              
-                        <div className="
-                        absolute 
-                        inset-0
-                        flex items-center justify-center 
-                        z-10 
-                        bottom-[45%] left-[25%] 
-                        md:bottom-[2%] md:left-[35%] 
-                        lg:bottom-[0%] lg:left-[30%] ">
-                          <div 
-                           className="
-                           relative
-                           flex items-center justify-center 
-                           h-[2vw] w-[2vw]
-                           min-w-[5px] min-h-[5px]
-                           max-w-[10px] max-h-[10px]
-                           rounded-full 
-                           bg-red-500/90
-                           animate-bounce-slower">
-                          </div>
-                        </div>
-              
-                        <div className="
-                        absolute 
-                        inset-0 
-                        flex 
-                        items-center 
-                        justify-center 
-                        z-10 
-                        bottom-[66%] left-[-20%] 
-                        md:bottom-[30%] md:left-[70%] 
-                        lg:bottom-[55%] lg:left-[50%] ">
-                          <div 
-                           className="
-                           absolute 
-                           h-[2vw] w-[2vw]
-                           min-w-[5px] min-h-[5px]
-                           max-w-[10px] max-h-[10px]
-                           rounded-full 
-                           bg-red-500/90
-                           animate-bounce-slower">
-                          </div>
-                        </div>
-              
-                        <div className="
-                        absolute 
-                        inset-0 
-                        flex 
-                        items-center 
-                        justify-center 
-                        z-10 
-                        bottom-[43%] left-[-20%] 
-                        md:bottom-[36%] md:left-[35%] 
-                        lg:bottom-[-2%] lg:left-[68%] ">
-                          <div 
-                           className="
-                           absolute 
-                           h-[2vw] 
-                           w-[2vw]
-                           min-w-[5px] min-h-[5px]
-                           max-w-[10px] max-h-[10px]
-                           rounded-full 
-                           bg-red-500/90
-                           animate-bounce-slower">
-                          </div>
-                        </div>
+{/* circles */}    
+       {/* interactive circles */}
+<div className="pointer-events-none absolute inset-0 overflow-hidden">
+
+  {/* background circle */}
+  <div className="absolute left-1/2 top-1/2 h-90 w-90 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/20 blur-[70px] animate-pulse" />
+
+  {/* contact circle */}
+<Link
+  href="#contact"
+  className="
+    pointer-events-auto
+    group
+    absolute
+    right-[8%]
+    top-[20%]
+    z-30
+    flex items-center justify-center
+    h-[50px] w-[50px]
+    sm:h-[60px] sm:w-[60px]
+    md:h-[70px] md:w-[70px]
+    lg:h-[80px] lg:w-[80px]
+    rounded-full
+    bg-red-500/80
+    shadow-xl shadow-red-500/40
+    backdrop-blur-md
+    animate-pulse
+    transition-all duration-700
+    hover:scale-110
+    hover:bg-red-600
+  "
+>
+
+  {/* expanding hover effect */}
+  <div
+    className="
+      absolute
+      inset-0
+      rounded-full
+      bg-white/10
+      scale-0
+      transition duration-200
+      "
+  />
+
+  {/* text */}
+  <span
+    className="
+      absolute
+      text-white
+      text-[0.6rem] md:text-[0.75rem] lg:text-[0.9rem]
+      font-light
+      opacity-0
+      group-hover:opacity-100
+      transition duration-200
+    "
+  >
+    Contact Me
+  </span>
+
+  {/* center dot */}
+  <div
+    className="
+      h-2 w-2
+      md:h-3 md:w-3
+      lg:h-4 lg:w-4
+      rounded-full
+      bg-white
+      transition duration-500
+      group-hover:scale-[10]
+      group-hover:opacity-30"
+  />
+</Link>
+
+  {/* small floating circle 1 */}
+  <div className="absolute left-[12%] top-[28%] h-4 w-4 rounded-full bg-red-500/80 shadow-lg shadow-red-500/50 animate-bounce-slower" />
+
+  {/* small floating circle 2 */}
+  <div className="absolute right-[20%] bottom-[25%] h-3 w-3 rounded-full bg-red-400/80 shadow-lg shadow-red-500/50 animate-bounce-slower" />
+
+  {/* small floating circle 3 */}
+  <div className="absolute left-[25%] bottom-[18%] h-2 w-2 rounded-full bg-red-500/80 shadow-lg shadow-red-500/50 animate-pulse" />
+
+</div>
               
               {/* text container */}
-                      <div className="z-5 pt-[40rem] px-[10vw] transform -translate-y-1/2 w-[100vw] h-[100vh] items-center">
-                      <div className="flex gap-8 text-2xl font-light">
-                      <h3 className="">Skill</h3>
-                      <h3 className="">|</h3>
-                      <h3 className="">Skill</h3>
-                      <h3 className="">|</h3>
-                      <h3 className="">Skill</h3>
+                      <div className="relative pt-20 px-8 z-20 flex flex-col items-center justufy-center text-center w-full max-w-5xl -translate-y-10">
+                      <div className="flex flex-wrap items-center justify-center gap-4 font-light">
+                      <button className="p-2 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105"> <h3 className="text-md text-white">{homepage.skill1}</h3> </button>
+                      <button className=""> <h3 className="">|</h3> </button>
+                      <button className="p-2 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105"> <h3 className="text-md text-white">{homepage.skill2}</h3> </button>
+                      <button className=""> <h3 className="">|</h3> </button>
+                      <button className="p-2 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105 transition"> <h3 className="text-md text-white">{homepage.skill3}</h3> </button>
                       
                       
                       </div>
                       
-                      <h1 className="text-7xl font-bold pt-5 left-0">
+                      <h1 className="text-4xl font-black uppercase md:text-5xl pt-5 left-0">
                         {homepage.name}
                       </h1>
                       
-                      <h2 className="text-4xl left-0 py-5">
+                      <h2 className="text-2xl font-bold text-black/50 md:text-3xl pt-5">
                         {homepage.role}</h2>
                       
-                      <h3 className="text-2xl py-5">
+                      <h3 className="text-xl font-light md:text-2xl py-5">
                         {homepage.bio} 
                       </h3>
                       
-                      <a href="#projects" 
-                      className="inline-block mt-5 px-5 py-4 text-white font-light rounded-3xl bg-red-500/90 hover:bg-red-500/30 hover:mt-4 hover:animate-ease transition duration-300">
-                        Scroll Down
-                      </a>
+                      <Link href="#projects" 
+                      className="z-50 mt-6 flex flex-col items-center justify-center w-30 h-30 p-2 text-black font-light rounded-full bg-red-500/4 
+                      hover:bg-white/60 animate-bounce-md hover:shadow-lg hover:animate-ease transition duration-300">
+                       <h3> Scroll Down </h3>
+                      <ArrowDownCircle 
+                      size={40}
+                      className="pt-2" />
+                      
+                      </Link>
                       </div>
               </section>     
         
