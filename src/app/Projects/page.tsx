@@ -71,7 +71,9 @@ export default async function Projects() {
                 unoptimized
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.image.url}`}
+                src={project.image.url.startsWith("http")
+                    ? project.image.url
+                    : `${process.env.NEXT_PUBLIC_STRAPI_URL}${project.image.url}`}
                 alt={project.title}
                 className="object-cover transition duration-500 group-hover:scale-105"
                 />
