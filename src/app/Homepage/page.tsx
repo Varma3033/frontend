@@ -112,12 +112,12 @@ export default async function Homepage() {
               
               {/* text container */}
                       <div className="relative pt-20 px-8 z-20 flex flex-col items-center justufy-center text-center w-full max-w-5xl -translate-y-10">
-                      <div className="flex flex-wrap items-center justify-center gap-4 font-light">
-                      <button className="p-2 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105"> <h3 className="text-md text-white">{homepage.skill1}</h3> </button>
-                      <button className=""> <h3 className="">|</h3> </button>
-                      <button className="p-2 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105"> <h3 className="text-md text-white">{homepage.skill2}</h3> </button>
-                      <button className=""> <h3 className="">|</h3> </button>
-                      <button className="p-2 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105 transition"> <h3 className="text-md text-white">{homepage.skill3}</h3> </button>
+                      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 font-light">
+                      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105"> <p className="md:text-md text-sm text-white">{homepage.skill1}</p> </div>
+                      <div className=""> <h3 className="">|</h3> </div>
+                      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105"> <p className="md:text-md text-sm text-white">{homepage.skill2}</p> </div>
+                      <div className=""> <h3 className="">|</h3> </div>
+                      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105 transition"> <p className="md:text-md text-sm text-white">{homepage.skill3}</p> </div>
                       
                       
                       </div>
