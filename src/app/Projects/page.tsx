@@ -1,36 +1,31 @@
 import Link from "next/link";
 import Image from "next/image"
 
-//
-async function getData(url: string) {
-  const res = await fetch(url, { cache: "no-store" });
-
-  if (!res.ok) {
-    console.error("Fetch failed:", res.status, url);
-    return null;
-  }
-
-  const text = await res.text();
-
-  if (!text) return null;
-
-  return JSON.parse(text);
-}
 
 async function getAllProjects() {
-  const data = await getData(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?populate=*`
-  );
+    const projectsRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?populate=*`,
+        { cache: "no-store" });
+    
+    if (!projectsRes.ok) return null;
+    const data = await projectsRes.json();
+    
+    console.log(data);
 
-  return data?.data || [];
+    return data.data;
 }
 
 async function projectPageTitle() {
-  const data = await getData(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/project-page-info?populate=*`
-  );
+    const projectpageRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/project-page-info?populate=*`,
+         { cache: "no-store" });
+   
+         if (!projectpageRes.ok) return null;
+    const data = await projectpageRes.json();
+    
+    console.log(data);
 
-  return data?.data || null;
+    return data.data;
 }
 
 
