@@ -11,10 +11,11 @@ import {
 
 
 async function getContactPage() {
-    const contactRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?populate=*`, {
-        cache: "no-store",
-    });
-
+    const contactRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?populate=*`, 
+        { cache: "no-store" });
+    
+    if (!contactRes.ok) return null;
     const data = await contactRes.json();
     
     console.log(data);
@@ -35,15 +36,15 @@ export default async function Contact() {
 
 {/* heading */}
         <div>
-            <h1 className="text-4xl font-black uppercase md:text-5xl">{contact.contactTitle}</h1>
-            <h2 className="mt-4 text-xl text-black/60 md:text-2xl">{contact.contactDescription}</h2>
+            <h1 className="text-4xl font-black uppercase md:text-5xl">{contact?.contactTitle}</h1>
+            <h2 className="mt-4 text-xl text-black/60 md:text-2xl">{contact?.contactDescription}</h2>
                        
         </div>
 
 {/* Contact Links */}
         <div className="grid gap-6 w-full max-w-3xl">
                         
-            <Link href={`mailto:${contact.email}`}
+            <Link href={`mailto:${contact?.email}`}
             className="h-30 group flex items-center justify-between rounded-4xl border border-black/10 bg-white/80 shadow-sm backdrop-blur-xl p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
                 
                 <div className="flex items-center gap-5 flex-1">
@@ -55,7 +56,7 @@ export default async function Contact() {
 
                 <div className="min-w-0">
                 <h2 className="truncate">
-                    {contact.emailTitle} {contact.email}
+                    {contact?.emailTitle} {contact?.email}
                 </h2>
                 </div>
 
@@ -68,7 +69,7 @@ export default async function Contact() {
                 
             </Link>     
             
-            <Link href={contact.social1URL}
+            <Link href={contact?.social1URL}
             className="h-30 group flex items-center justify-between rounded-4xl border border-black/10 bg-white/80 shadow-sm p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
                 
                 <div className="flex items-center gap-5">
@@ -78,7 +79,7 @@ export default async function Contact() {
                 </div>
                 
                 <h2>       
-                    {contact.social1} {contact.social1username}
+                    {contact?.social1} {contact?.social1username}
                 </h2>
                 
                 </div>
@@ -88,7 +89,7 @@ export default async function Contact() {
                 
             </Link>
 
-            <Link href={contact.social2URL}
+            <Link href={contact?.social2URL}
             className="h-30 group flex items-center justify-between rounded-4xl border border-black/10 bg-white/80 shadow-sm p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
                 
                 <div className="flex items-center gap-5">
@@ -98,7 +99,7 @@ export default async function Contact() {
                 </div>
                 
                 <h2>       
-                    {contact.social2} {contact.social2username}
+                    {contact?.social2} {contact?.social2username}
                 </h2>
                 
                 </div>

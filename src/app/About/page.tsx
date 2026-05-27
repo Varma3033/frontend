@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 async function getAboutPage() {
-    const aboutRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?populate=*`, 
-        {
-        cache: "no-store",
-    });
+    const aboutRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?populate=*`, 
+        { cache: "no-store"});
 
+    if (!aboutRes.ok) return null;
     const data = await aboutRes.json();
     
     console.log(data);
@@ -29,9 +29,9 @@ export default async function About() {
                 unoptimized
                 sizes="(max-width: 768px) 180px, 300px"
                 fill
-                key={about.id}
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${about.profilepic.url}`}
-                alt={about.name}
+                key={about?.id}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${about?.profilepic.url}`}
+                alt={about?.name}
                 className="object-cover rounded-full transition duration-300 hover:scale-105" 
                 />   
             </div>
@@ -41,27 +41,27 @@ export default async function About() {
             
             <div className="">
              <h2 className="text-4xl font-black uppercase md:text-5xl">
-                {about.name}
+                {about?.name}
              </h2>
             </div>
             
             <div className="flex flex-row items-center justify-center gap-6 py-4">
             <div className="py-3 px-4 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105">                  
              <h3 className="text-lg text-white">
-                {about.role}
+                {about?.role}
              </h3>
             </div>
 
             <div className="p-3 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105">                  
              <h3 className="text-lg text-white">
-                {about.location}
+                {about?.location}
              </h3>
             </div>
             </div>
 
             <div className="w-[75vw] max-w-[800px] flex justify-center items-center">
              <p className="mt-4 text-center text-md md:text-lg">
-                {about.bio}
+                {about?.bio}
              </p>
             </div>
             

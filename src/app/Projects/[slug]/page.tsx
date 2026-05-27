@@ -8,11 +8,10 @@ import {
 async function getProjects(slug: string) {
   const projectRes = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`,
-  {
-    cache: "no-store",
-  }
+  {cache: "no-store"}
   );
-
+  
+  if (!projectRes.ok) return null;
 const data = await projectRes.json();
 console.log("Slug from URL", slug)
 console.log("Strapi Result", data)

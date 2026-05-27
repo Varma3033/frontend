@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image"
 
 async function getAllProjects() {
-    const projectsRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?populate=*`, {
-        cache: "no-store",
-    });
-
+    const projectsRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?populate=*`,
+        { cache: "no-store" });
+    
+    if (!projectsRes.ok) return null;
     const data = await projectsRes.json();
     
     console.log(data);
@@ -14,10 +15,11 @@ async function getAllProjects() {
 }
 
 async function projectPageTitle() {
-    const projectpageRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/project-page-info?populate=*`, {
-        cache: "no-store",
-    });
-
+    const projectpageRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/project-page-info?populate=*`,
+         { cache: "no-store" });
+   
+         if (!projectpageRes.ok) return null;
     const data = await projectpageRes.json();
     
     console.log(data);
@@ -37,8 +39,8 @@ export default async function Projects() {
        <div className="mx-auto max-w-7xl">
         
         <div className="mb-10 text-center"> 
-        <p className="pb-4 text-black/50">{projectpage.projectPageDesc}</p>
-        <h1 className="text-4xl font-black uppercase md:text-5xl">{projectpage.projectPageTitle}</h1>
+        <p className="pb-4 text-black/50">{projectpage?.projectPageDesc || "Selected Work"}</p>
+        <h1 className="text-4xl font-black uppercase md:text-5xl">{projectpage?.projectPageTitle || "Projects"}</h1>
         </div>
 
         <div 

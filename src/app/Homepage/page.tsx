@@ -4,10 +4,11 @@ import {
 } from "lucide-react"
 
 async function getHomePage() {
-    const homepageRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/homepage?populate=*`, {
-        cache: "no-store",
-    });
-
+    const homepageRes = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/homepage?populate=*`,
+       { cache: "no-store" });
+    
+    if (!homepageRes.ok) return null;
     const data = await homepageRes.json();
     
     console.log(data);
