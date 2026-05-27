@@ -94,7 +94,7 @@ export default async function ProjectDetailPage({params,}:
             unoptimized
             sizes="(max-width: 700px) 85vw, (max-width: 1024px) 50vw, 700px"
             fill
-            src={`http://localhost:1337${image.url}`}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.url}`}
             alt={project.title}
             className="object-cover transition duration-500 hover:scale-105" 
             />

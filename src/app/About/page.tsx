@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 async function getAboutPage() {
-    const aboutRes = await fetch("http://localhost:1337/api/about?populate=*", {
+    const aboutRes = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?populate=*`, 
+        {
         cache: "no-store",
     });
 
