@@ -88,6 +88,8 @@ export default async function ProjectDetailPage({params,}:
             
           <div className="mx-auto mt-10 px-5 max-w-7xl overflow-hidden">
           <div className="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-5">
+          
+          {/*loops through all images in strapi*/}
           {images.map((image: any) => (
             <div
             key={image.id}
