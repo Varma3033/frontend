@@ -110,39 +110,38 @@ export default async function Homepage() {
 
 </div>
               
-              {/* text container */}
-                      <div className="relative pt-20 px-8 z-20 flex flex-col items-center justufy-center text-center w-full max-w-5xl -translate-y-10">
-                      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 font-light">
-                      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105"> <p className="md:text-md text-sm text-white">{homepage.skill1}</p> </div>
-                      <div className=""> <h3 className="">|</h3> </div>
-                      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105"> <p className="md:text-md text-sm text-white">{homepage.skill2}</p> </div>
-                      <div className=""> <h3 className="">|</h3> </div>
-                      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105 transition"> <p className="md:text-md text-sm text-white">{homepage.skill3}</p> </div>
+{/* text container */}
+      <div className="relative pt-20 px-8 z-20 flex flex-col items-center justufy-center text-center w-full max-w-5xl -translate-y-10">
+      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 font-light">
+      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105"> <p className="md:text-md text-sm text-white">{homepage.skill1}</p> </div>
+      <div className=""> <h3 className="">|</h3> </div>
+      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105"> <p className="md:text-md text-sm text-white">{homepage.skill2}</p> </div>
+      <div className=""> <h3 className="">|</h3> </div>
+      <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-xl rounded-2xl transition duration-300 hover:scale-105 transition"> <p className="md:text-md text-sm text-white">{homepage.skill3}</p> </div>
                       
+      </div>
                       
-                      </div>
+      <h1 className="text-4xl font-black uppercase md:text-5xl pt-5 left-0">
+          {homepage.name}
+      </h1>
                       
-                      <h1 className="text-4xl font-black uppercase md:text-5xl pt-5 left-0">
-                        {homepage.name}
-                      </h1>
+      <h2 className="text-2xl font-bold text-black/50 md:text-3xl pt-5">
+      {homepage.role}</h2>                
                       
-                      <h2 className="text-2xl font-bold text-black/50 md:text-3xl pt-5">
-                        {homepage.role}</h2>
+       <h3 className="text-xl font-light md:text-2xl py-5">
+       {homepage.bio} 
+       </h3>
                       
-                      <h3 className="text-xl font-light md:text-2xl py-5">
-                        {homepage.bio} 
-                      </h3>
+       <Link href="#projects" 
+        className="z-50 mt-6 flex flex-col items-center justify-center w-30 h-30 p-2 text-black font-light rounded-full bg-red-500/4 
+                   hover:bg-white/60 animate-bounce-md hover:shadow-lg hover:animate-ease transition duration-300">
+       <h3> Scroll Down </h3>
+       <ArrowDownCircle 
+        size={40}
+        className="pt-2" />
                       
-                      <Link href="#projects" 
-                      className="z-50 mt-6 flex flex-col items-center justify-center w-30 h-30 p-2 text-black font-light rounded-full bg-red-500/4 
-                      hover:bg-white/60 animate-bounce-md hover:shadow-lg hover:animate-ease transition duration-300">
-                       <h3> Scroll Down </h3>
-                      <ArrowDownCircle 
-                      size={40}
-                      className="pt-2" />
-                      
-                      </Link>
-                      </div>
-              </section>     
+        </Link>
+         </div>
+       </section>     
         
         )}
