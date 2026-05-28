@@ -7,7 +7,7 @@
 
 /* global css properties that i need */
 
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -31,14 +31,16 @@ body {
   max-width: 100%;
 }
 
-
 /*creating simple animations using tailwind animate property*/
 @keyframes bounceMd {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
     opacity: 0.75;
   }
-  25%, 50%, 75% {
+  25%,
+  50%,
+  75% {
     transform: translateY(-2vh);
     opacity: 1;
   }
@@ -49,7 +51,8 @@ body {
 }
 
 @keyframes bounceSlow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
     opacity: 0.5;
   }
@@ -64,7 +67,8 @@ body {
 }
 
 @keyframes bounceSlower {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
     opacity: 0.5;
   }
@@ -77,4 +81,3 @@ body {
 .animate-bounce-slower {
   animation: bounceSlower 8s ease-out infinite;
 }
-

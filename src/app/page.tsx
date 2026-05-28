@@ -17,5 +17,5 @@ export default function Portfolio() {
       <Contact />
       <Footer />
     </main>
-  )
+  );
 }

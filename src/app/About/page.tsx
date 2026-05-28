@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-
 async function getAboutPage() {
   const aboutRes = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?populate=*`,
@@ -18,8 +17,8 @@ async function getAboutPage() {
 export default async function About() {
   const about = await getAboutPage();
 
-    return (
-//about section
+  return (
+    //about section
     <section
       id="about"
       className="relative mt-0 min-h-screen flex pt-30 justify-center"
