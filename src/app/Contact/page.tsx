@@ -25,7 +25,7 @@ async function getContactPage() {
 
 export default async function Contact() {
     const contact = await getContactPage();
-//contact section
+    
     return (
 //contacts section
         <section
