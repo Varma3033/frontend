@@ -1,8 +1,11 @@
 @import "tailwindcss";
+
 /* @plugin "tailwindcss/typography";
 @tailwind base;
 @tailwind components;
 @tailwind utilities; */
+
+/* global css properties that i need */
 
 *{
   box-sizing: border-box;
@@ -28,6 +31,8 @@ body {
   max-width: 100%;
 }
 
+
+/*creating simple animations using tailwind animate property*/
 @keyframes bounceMd {
   0%, 100% {
     transform: translateY(0);
@@ -57,7 +62,6 @@ body {
 .animate-bounce-slow {
   animation: bounceSlow 5s ease-out infinite;
 }
-
 
 @keyframes bounceSlower {
   0%, 100% {

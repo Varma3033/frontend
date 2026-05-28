@@ -20,13 +20,13 @@ export default async function Homepage() {
     const homepage = await getHomePage();
     
     return (
-        
+//homepage section
         <section 
         id="home" 
         className="relative mt-0 min-h-screen flex items-center justify-center px-5 overflow-hidden"
                     >   
 {/* circles */}    
-       {/* interactive circles */}
+  {/* interactive circles */}
 <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
   {/* background circle */}
@@ -99,18 +99,15 @@ export default async function Homepage() {
   />
 </Link>
 
-  {/* small floating circle 1 */}
+{/*small floating circles using animations created in globals.css*/}
   <div className="absolute left-[12%] top-[28%] h-4 w-4 rounded-full bg-red-500/80 shadow-lg shadow-red-500/50 animate-bounce-slower" />
 
-  {/* small floating circle 2 */}
   <div className="absolute right-[20%] bottom-[25%] h-3 w-3 rounded-full bg-red-400/80 shadow-lg shadow-red-500/50 animate-bounce-slower" />
 
-  {/* small floating circle 3 */}
   <div className="absolute left-[25%] bottom-[18%] h-2 w-2 rounded-full bg-red-500/80 shadow-lg shadow-red-500/50 animate-pulse" />
 
 </div>
               
-{/* text container */}
       <div className="relative pt-20 px-8 z-20 flex flex-col items-center justufy-center text-center w-full max-w-5xl -translate-y-10">
       <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 font-light">
       <div className="md:p-2 p-1 bg-red-500/50 backdrop-blur-lg rounded-2xl transition duration-300 hover:scale-105"> <p className="md:text-md text-sm text-white">{homepage.skill1}</p> </div>

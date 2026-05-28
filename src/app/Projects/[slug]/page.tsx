@@ -5,17 +5,23 @@ import {
     ArrowLeftCircle
 } from "lucide-react"
 
+// This creates an asynchronous function used to fetch a specific project from Strapi using its slug
 async function getProjects(slug: string) {
   const projectRes = await fetch(
+
+// Filters projects by looking at the slug
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`,
   {cache: "no-store"}
   );
-  
+
   if (!projectRes.ok) return null;
 const data = await projectRes.json();
 console.log("Slug from URL", slug)
 console.log("Strapi Result", data)
 
+  
+// Returns the first matching project object
+// if there is no object/data return null  
 return data.data?.[0] ?? null;
 
 }
@@ -23,19 +29,27 @@ return data.data?.[0] ?? null;
 
 export default async function ProjectDetailPage({params,}: 
   {
+  // Defines the expected params object type
   params: Promise<{ slug: string }>;
-}) {
+  }) {
+  
+   // Extracts slug from URL parameters
   const {slug} = await params;
   
-  const project= await getProjects(slug);
-
+  // Fetches project data using the slug
+  const project = await getProjects(slug);
+  
+  // If no project exists, display hardcoded text
   if (!project) {
     return <div className="p-10">Project Unavailable</div>;
   }
 
+  // Stores carousel images from strapi
+  // If no images in strapi, still load the site
   const images = project.carouselImages || [];
 
   return (
+  //project info page
     <main className="flex flex-col min-h-screen overflow-x-hidden">
     
     <div className="flex-1 w-full mt-0 pt-10">
@@ -43,15 +57,17 @@ export default async function ProjectDetailPage({params,}:
 
 {/* Header */}    
       <div className="relative flex items-center justify-center text-center">
-                
+
+{/*Back button to main page*/}            
         <Link 
         href="/#projects" 
         className="absolute left-5 top-0 flex items-center 
         gap-2 rounded-full border border-black/10 bg-black/50
         px-3 py-2 text-sm text-white shadow-md 
         hover:bg-white/50 hover:text-black">
-
+{/*React back arrow icon*/}
         <ArrowLeftCircle size={24} />
+{/*Back button text hidden on small screens*/}      
         <span className="hidden md:block">Back</span>
         </Link>
         

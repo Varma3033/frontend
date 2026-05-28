@@ -25,9 +25,9 @@ async function getContactPage() {
 
 export default async function Contact() {
     const contact = await getContactPage();
-    
+//contact section
     return (
-        
+//contacts section
         <section
          id="contact" 
          className="relative min-h-screen pt-[15vh] px-6 mt-0 ">

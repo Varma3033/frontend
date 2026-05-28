@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 //layout component/function that wraps around the entire application, providing a consistent structure and styling across all pages
 //export default means that this function can be used by any other file
 export default function RootLayout({
-  //children is a special prop object that containt the content that will be rendered inside the layout component.
+  //children is a special prop object that contains the content that will be rendered inside the layout component.
+  
+  //within children is the page.tsx file 
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -25,9 +27,9 @@ return (
         {/* main container for the application*/}
        <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
           
-          <main>
+        <main>      
             {children}
-          </main>
+        </main>
         
        </div>
               
