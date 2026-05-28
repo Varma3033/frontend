@@ -50,7 +50,7 @@ export default function Navbar() {
         <header className="w-[92vw] max-w-[400px] h-[50px] mt-10 fixed z-50 left-1/2 transform -translate-x-1/2 right-1/2 rounded-full bg-white/80 backdrop-blur-xl">
         
           <nav className="w-full h-full border border-black/20 shadow-xs shadow-black/20 rounded-full backdrop-blur-xl">
-            <ul className="flex h-[50px] items-center justify-center gap-4 text-md md:text-lg font-light backdrop-blur-xl">
+            <ul className="flex h-[50px] items-center justify-center gap-4 text-md md:text-lg font-light rounded-full backdrop-blur-xl">
               
               <li>
                 <NavLink 
