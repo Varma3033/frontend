@@ -9,7 +9,6 @@ import NavLink from "./navlink";
 
 
 export default function Navbar() {
-
 //variable to keep track of the active section on the page, starting from the homepage (chatgpt helped me figure this out) 
   const [activeSection, setActiveSection] = useState("home");
 
@@ -34,16 +33,17 @@ export default function Navbar() {
             { 
                 // Controls at what % of the page does each section "active"- key for navbar to highlight accordingly
                 rootMargin: "-40% 0px -50% 0px",
+                //this means even a small intersection triggers the observer
                 threshold: 0 
             }
         );
-//
+// Starts observing every section element
         sections.forEach((section) => observer.observe(section));
-//
+// React Cleanup function which tells the observer to stop observing sections when the navbar is removed or gone-increase performance
         return () => {
             sections.forEach((section) => observer.unobserve(section));
-            };
-    }, []);//
+        };
+    }, []);
 
         return (
 //navbar/header component with styling and navigation links
